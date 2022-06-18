@@ -1,7 +1,7 @@
 USE db_escola;
 
 -- inserir 1 registro --
-USE INTO tb_professor (nome, email, cpf)
+INSERT INTO tb_professor (nome, email, cpf)
 VALUES ('Chiquim das Tapiocas', 'chiquim@email.com', '33312312312');
 
 -- inserir muitos registros --
@@ -18,7 +18,7 @@ DELETE FROM tb_professor WHERE id='1';
 DELETE FROM tb_professor;
 
 -- Editar dados de 1 registro --
-UPDATE tb_professor SET nome='Luiza da Caucaia' WHERE cpf='2312343214';
+UPDATE tb_professor SET nome='Luiza da Caucaia' WHERE cpf='12312343214';
 
 -- Editar dados de todos os registros --
 UPDATE tb_professor SET nome='Francisco';
