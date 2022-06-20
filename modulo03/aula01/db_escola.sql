@@ -28,8 +28,8 @@ CREATE TABLE tb_aluno (
     matricula VARCHAR(10) NOT NULL
 );
 
--- inserir dados --
-INSERT INTO tb_professor (nome, email, cpf) 
+-- Insert dados --
+INSERT INTO tb_professor (nome, email, cpf)
 VALUES (
     'Alessandro', 'ale@email.com', '12312312312'
 );
@@ -37,4 +37,7 @@ VALUES (
 INSERT INTO tb_professor (nome, email, cpf)
 VALUES (
     'Bruno', 'bruno@email.com', '33311144411'
-)
+);
+
+-- Selecionar os dados--
+SELECT * FROM tb_professor;

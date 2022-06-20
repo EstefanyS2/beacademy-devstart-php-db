@@ -14,6 +14,7 @@ VALUES
 -- Excluir 1 registro --
 DELETE FROM tb_professor WHERE id='1';
 
+
 -- Excluir todos --
 DELETE FROM tb_professor;
 

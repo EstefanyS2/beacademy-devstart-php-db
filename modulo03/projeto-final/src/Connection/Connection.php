@@ -8,13 +8,27 @@ use PDO;
 
 abstract class Connection
 {
-    public static function getConnection():\PDO
+    public static function getConnection(): \PDO
     {
-        $database = 'db_store';
-        $username = 'root';
-        $password = 'Es141099@';
+       $database = 'db_store';
+       $username = 'root';
+       $password = 'Es141099@';
 
-        return new \PDO('mysql:host=localhost;dbname='.$database, $username, $password);
-
+       return new \PDO('mysql:host=localhost;dbname='.$database, $username, $password);
     }
 }
+
+
+//use PDO;
+
+//abstract class Connection 
+//{
+   // public static function getConnection(): \PDO
+   // {
+      //  $database = 'db_store';
+       // $username = 'root';
+       // $passaword = 'Es141099@';
+
+        //return new \PDO('mysql:host=localhost;dbname='.$database, $username, $passaword);
+   // }  
+//}
