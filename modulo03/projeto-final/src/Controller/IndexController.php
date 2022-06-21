@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace AppController;
+namespace App\Controller;
 
-use App\Controller\AbstractController;
 
 class IndexController extends AbstractController
 {
