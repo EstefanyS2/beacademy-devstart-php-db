@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-class ErrorController extends AbstractController
-{
-    public function notFoundAction(): void
+class ErrorController extends AbstractController {
+    public function notFounAction(): void
     {
-       parent::class
+        parent::render('error/notFound');
     }
 }

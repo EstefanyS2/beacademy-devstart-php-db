@@ -22,7 +22,7 @@ $url = explode('?', $_SERVER['REQUEST_URI'])[0];
 $routes = include '../config/routes.php';
 
 if (false === isset($routes[$url])) {
-   (new ErrorController)->notFoundAction();
+   (new ErrorController)->notFoundAction(); //tirei dos parenteses
    exit;
 }
 
