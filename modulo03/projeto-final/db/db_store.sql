@@ -16,7 +16,7 @@ CREATE TABLE tb_product (
     photo VARCHAR(255) NOT NULL,
     value FLOAT(5,2) not null,
     category_id INT(11) NOT NULL,
-    quanty INT(5) NOT NULL,
+    quantity INT(5) NOT NULL,
     created_at DATETIME NOT NULL
 );
 
@@ -42,5 +42,6 @@ DESC td_product;
 
 INSERT INTO tb_product (name, description, photo, value, category_id, quantity, created_at)
 VALUES 
-('Teclado', 'Teclado Bla bla', 'https://m.media-amazon.com/images/I/616Lyy60cTL._AC_SL1200_.jpg', 199.89, 1, 50 '2022-06-21 21:34:20'),
-('Teclado 2', 'Teclado Bla bla', 'https://m.media-amazon.com/images/I/616Lyy60cTL._AC_SL1200_.jpg', 199.89, 1, 50 '2022-06-21 21:34:20');
+('Teclado', 'Teclado Bla bla', 'https://m.media-amazon.com/images/I/616Lyy60cTL._AC_SL1200_.jpg', 199.89, 1, 50, '2022-06-21 21:34:20'),
+('Teclado 2', 'Teclado Bla bla', 'https://m.media-amazon.com/images/I/616Lyy60cTL._AC_SL1200_.jpg', 199.89, 1, 50, '2022-06-21 21:34:20')
+;
