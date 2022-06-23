@@ -31,7 +31,7 @@ class ProductController extends AbstractController
             $value = $_POST['value'];
             $photo = $_POST['photo'];
             $quantity = $_POST['quantity'];
-            $categoryId = $_POST['categorya'];
+            $categoryId = $_POST['category'];
             $createdAt = date('Y-m-d H:i:s');
 
             $query = "
@@ -44,13 +44,11 @@ class ProductController extends AbstractController
 
             echo 'Pronto, produto adcionado';
    
+        
         }
 
-        
-        
         $result = $con->prepare('SELECT * FROM tb_category');
         $result->execute();
-
         parent::render('product/add', $result);
         
     }
@@ -60,41 +58,42 @@ class ProductController extends AbstractController
 
         $con = Connection::getConnection();
 
-        $categories = $con->prepare('SELECT * FROM tb_category');
-        $categories->execute();
+        //$categorias = $con->prepare('SELECT * FROM tb_category');
+        //$categorias->execute();
 
-        if ($_POST){
-
+        if ($_POST) {
             $name = $_POST['name'];
             $description = $_POST['description'];
             $value = $_POST['value'];
-            $quantity = $_POST['quantity'];
             $photo = $_POST['photo'];
+            $quantity = $_POST['quantity'];
+
 
             $query = "
-                    UPDATE tb_product SET
-                        name = '{$name}',
-                        description = '{$description}',
-                        value = '{$value}',
-                        quantity = '{$quantity}',
-                        photo = '{$photo}'
-                    WHERE id='{$id}'
-                    ";
+                  UPDATE tb_product  SET 
+                    name='{$name}',
+                    description='{$description}',
+                    value='{$value}',
+                    photo='{$photo}',
+                    quantity='{$quantity}',
+                WHERE id='{$id}'
+            ";
+
             $resultUpdate = $con->prepare($query);
             $resultUpdate->execute();
 
-            echo 'Pronto, produto atualizado';
+            echo 'Pronto, produto atualizado',
+        
 
-        }
-
-        $product = $con->prepare("SELECT * FROM tb_product WHERE id='{$id}'");
+        $product = $con->prepare("SELECT * FROM tb_procduct WHERE id='{$id}'");
         $product->execute();
 
         parent::render('product/edit', [
-            'product' => $product->fetch(\PDO::FETCH_ASSOC),
+            '' => $product->fetch(\PDO::FETCH_ASSOC),
         ]);
-        
+
     }
+}
 
     public function removeAction(): void
     {
@@ -105,9 +104,8 @@ class ProductController extends AbstractController
         $result = $con->prepare("DELETE FROM tb_product WHERE id='{$id}'");
         $result->execute();
 
-        parent::renderMessage('Pronto, produto excluido');
 
-
+        parent::rendermessage('Pronto, produto excluido');
     }
 
     public function reportAction(): void

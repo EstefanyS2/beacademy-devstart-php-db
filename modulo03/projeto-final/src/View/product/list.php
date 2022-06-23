@@ -1,7 +1,8 @@
 <h1>Listar Produto</h1>
 
 <div class="mb-3 text-end"> <!--direciona botao para o lado direito-->
-    <a href="/produtos/novo" class="btn btn-outline-primary">Novo Produto</a>
+    <a href="/produtos/novo" class="btn btn-dark">Novo Produto</a>
+    <a href="/produtos/relatorio" class="btn btn-dark">Gerar PDF</a>
 </div>
 
 <table class="table table-hover table-striped">
@@ -32,7 +33,8 @@
             <td>{$quantity}</td>
             <td>{$created_at}</td>
           <td>
-              Editar / Excluir
+              <a href'/produtos/editar?id={$id}' class='btn btn-outline-danger btn-sm'>Editar</a>
+              <a href='/produtos/excluir?id={$id}' class='btn btn-outline-danger btn-sm'>Excluir</a>
          </td>
         </tr>
        ";

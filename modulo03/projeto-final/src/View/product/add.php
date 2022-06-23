@@ -6,11 +6,10 @@
         <option selected> -- Selecione --</option>
 
       <?php
-       while ($categoy = $data->fetch(\PDO::FETCH_ASSOC)) {
-        extract($category);
+          while ($categoy = $data->fetch(\PDO::FETCH_ASSOC)) {
 
-        echo "<option value='{$id}'>{$name}</option>";
-       }
+           echo '<option>'.$category['name'].'</option>';
+           }  
        ?>
     </select>
 
