@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Connection\Connection;
+use App\Connection\Connection; 
 use Dompdf\Dompdf;
 
 
@@ -17,7 +17,6 @@ class ProductController extends AbstractController
         $result = $con->prepare('SELECT * FROM tb_product');
         $result->execute();
 
-
         
         parent::render('product/list', $result);
 
@@ -28,22 +27,24 @@ class ProductController extends AbstractController
 
         if ($_POST){
             $name = $_POST['name'];
-            $category_id = $_POST['category'];
             $description = $_POST['description'];
             $value = $_POST['value'];
-            $quantity = $_POST['quantity'];
             $photo = $_POST['photo'];
+            $quantity = $_POST['quantity'];
+            $categoryId = $_POST['categorya'];
             $createdAt = date('Y-m-d H:i:s');
 
-            $query = "INSERT INTO tb_product 
-            (name, description, value, photo, quantity, category_id, created_at) 
-            VALUES ('{$name}', '{$description}', '{$value}', '{$photo}', '{$quantity}', '{$category_id}', '{$createdAt}')";
+            $query = "
+            INSERT INTO tb_product (name, description, value, photo, quantity, category_id, created_at) 
+            VALUES ('{$name}', '{$description}', '{$value}', '{$photo}', '{$quantity}', '{$categoryId}', '{$createdAt}');
+            ";
 
             $result = $con->prepare($query);
             $result->execute();
 
-            echo 'Pronto, produto cadastrado!';
-        };
+            echo 'Pronto, produto adcionado';
+   
+        }
 
         
         
