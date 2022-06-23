@@ -1,9 +1,9 @@
 <h1>Listar Categorias</h1>
 
 
-<!--<div class="mb-3 text-end"> <!--direciona botao para o lado direito
-    <a href="/categorias/novo" class="btn btn-outline-primary">Categoria</a>
-</div>-->
+<div class="mb-3 text-end"> <!--direciona botao para o lado direito-->
+    <a href="/categorias/novo" class="btn btn-dark">Categoria</a>
+</div>
 
 <table class="table table-hover table-striped">
     <thead class="table-dark">
@@ -24,8 +24,8 @@
                echo "<td>{$name}</td>";
                echo "<td>{$description}</td>";
                echo "<td>
-                  <a href='/categorias/editar?id={$id}' class='btn btn-danger btn-sm'>Editar</a>
-                  <a href='/categorias/excluir?id={$id}' class='btn btn-danger btn-sm'>Excluir</a>
+                  <a href='/categorias/editar?id={$id}' class='btn btn-dark btn-sm'>Editar</a>
+                  <a href='/categorias/excluir?id={$id}' class='btn btn-dark btn-sm'>Excluir</a>
                </td>";
             echo '<?tr>';
         }
