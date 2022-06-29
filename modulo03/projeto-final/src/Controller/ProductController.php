@@ -36,15 +36,13 @@ class ProductController extends AbstractController
 
             $query = "
             INSERT INTO tb_product (name, description, value, photo, quantity, category_id, created_at) 
-            VALUES ('{$name}', '{$description}', '{$value}', '{$photo}', '{$quantity}', '{$categoryId}', '{$createdAt}');
-            ";
+            VALUES ('{$name}', '{$description}', '{$value}', '{$photo}', '{$quantity}', '{$categoryId}', '{$createdAt}')";
 
             $result = $con->prepare($query);
             $result->execute();
 
             echo 'Pronto, produto adcionado';
    
-        
         }
 
         $result = $con->prepare('SELECT * FROM tb_category');
@@ -57,43 +55,45 @@ class ProductController extends AbstractController
         $id = $_GET['id'];
 
         $con = Connection::getConnection();
-
         //$categorias = $con->prepare('SELECT * FROM tb_category');
         //$categorias->execute();
+
+        $categories = $con->prepare('SELECT * FROM tb_category');
+        $categories->execute();
 
         if ($_POST) {
             $name = $_POST['name'];
             $description = $_POST['description'];
             $value = $_POST['value'];
-            $photo = $_POST['photo'];
             $quantity = $_POST['quantity'];
+            $photo = $_POST['photo']; //troquei
+           
 
 
             $query = "
                   UPDATE tb_product  SET 
-                    name='{$name}',
-                    description='{$description}',
-                    value='{$value}',
-                    photo='{$photo}',
-                    quantity='{$quantity}',
+                    name = '{$name}',
+                    description = '{$description}',
+                    value = '{$value}',
+                    quantity = '{$quantity}',
+                    photo = '{$photo}',
                 WHERE id='{$id}'
             ";
 
             $resultUpdate = $con->prepare($query);
             $resultUpdate->execute();
 
-            echo 'Pronto, produto atualizado',
-        
+            echo 'Pronto, produto atualizado';
+        }
 
         $product = $con->prepare("SELECT * FROM tb_procduct WHERE id='{$id}'");
         $product->execute();
 
         parent::render('product/edit', [
-            '' => $product->fetch(\PDO::FETCH_ASSOC),
+            'product' => $product->fetch(\PDO::FETCH_ASSOC),
         ]);
 
     }
-}
 
     public function removeAction(): void
     {
@@ -105,7 +105,7 @@ class ProductController extends AbstractController
         $result->execute();
 
 
-        parent::rendermessage('Pronto, produto excluido');
+        parent::renderMessage('Pronto, produto excluido');
     }
 
     public function reportAction(): void
@@ -117,8 +117,7 @@ class ProductController extends AbstractController
 
         $content = '';
 
-        while ($product = $result->fetch(\PDO::FETCH_ASSOC)){
-
+        while ($product = $result->fetch(\PDO::FETCH_ASSOC)) {
             extract($product);
 
             $content .="
@@ -131,16 +130,15 @@ class ProductController extends AbstractController
             ";
         }
 
-      
-
         $html = "
             <h1>Relatório de Produtos</h1>
+
             <table border='1' width= '100%'>
                 <thead>
                     <tr>
                         <th>#ID</th>
-                        <th>Produto</th>
-                        <th>Saldo disponível</th>
+                        <th>Mome</th>
+                        <th>Quantidade</th>
                         <th>Categoria</th>
                     </tr>
                 </thead>
@@ -153,7 +151,7 @@ class ProductController extends AbstractController
         ";
 
         $pdf = new Dompdf();
-        $pdf->loadHtml($html);
+        $pdf->load_html($html);
 
         $pdf->render();
         $pdf->stream();

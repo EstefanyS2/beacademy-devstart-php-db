@@ -3,8 +3,6 @@
 ini_set('display_errors', 1);
 
 include '../vendor/autoload.php';
-
-//use App\Connection\Connection;
 use App\Controller\ErrorController;
 //$connection = Connection::getConnection();
 

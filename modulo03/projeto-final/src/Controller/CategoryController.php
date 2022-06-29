@@ -12,13 +12,13 @@ class CategoryController extends AbstractController
     {
        $con = Connection::getConnection();
 
-       $result = $con->prepare('SELECT * FROM tb_category');
+       $query = 'SELECT * FROM tb_category';
+       $result = $con->prepare($query);
        $result->execute();
        
        parent::render('category/list', $result);
     }
   
-
      public function addAction(): void
      {
 
@@ -63,7 +63,7 @@ class CategoryController extends AbstractController
          $newName = $_POST['name'];
          $newDescription = $_POST['description'];
 
-         $queryUpdate = "UPDATE tb_category SET name='{$newName}', description='$newDescription' WHERE id='{$id}'";
+         $queryUpdate = "UPDATE tb_category SET name='{$newName}', description='{$newDescription}' WHERE id='{$id}'";
 
          $result = $con->prepare($queryUpdate);
          $result->execute();

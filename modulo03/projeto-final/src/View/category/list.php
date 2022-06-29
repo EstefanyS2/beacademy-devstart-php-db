@@ -27,7 +27,7 @@
                   <a href='/categorias/editar?id={$id}' class='btn btn-dark btn-sm'>Editar</a>
                   <a href='/categorias/excluir?id={$id}' class='btn btn-dark btn-sm'>Excluir</a>
                </td>";
-            echo '<?tr>';
+            echo '</tr>';
         }
         ?>
     </tbody>

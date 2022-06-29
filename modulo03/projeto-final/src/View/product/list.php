@@ -21,7 +21,7 @@
 
 <tbody>
     <?php
-     while ($product = $data->fetch(\PDO::FETCH_ASSOC)) {
+     while($product = $data->fetch(\PDO::FETCH_ASSOC)) {
         extract($product);
         echo "
           <tr>
